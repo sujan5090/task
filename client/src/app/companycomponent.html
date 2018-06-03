@@ -1,13 +1,22 @@
+
 <label>Company:</label>  
-<select [(ngModel)]="selectedCompany.id" (change)="onSelect($event.target.value)">  
+<select  (change)="onSelect($event.target.value)">  
 <option value="0">--Select Company--</option>  
 <option *ngFor="let company of companies" value={{company.id}}>{{company.name}}</option>  
 </select>  
 <br /><br />  
 <div>  
     <label>Model:</label>  
-    <select>  
+    <select (change)="onDisplay($event.target.value)">  
 <option *ngIf='selectedCompany.id == 0' value="0">--Select Model--</option>  
 <option *ngFor="let model of models " value={{model.id}}>{{model.name}}</option>  
 </select>  
+<div *ngIf='show'>
+    <div *ngFor="let detail of details" >
+        <ul>
+    <li><p >{{detail.name}}</p>
+    <img [src] = 'detail.image'>
+    </li>
+    </ul>
+    <div>
 </div>
